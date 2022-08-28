@@ -1,0 +1,13 @@
+ul {
+    background-color: rgb(94, 15, 168);
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+button {
+    background-color: rgb(202, 156, 245);
+
+
+}

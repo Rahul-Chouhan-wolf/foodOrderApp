@@ -1,0 +1,6 @@
+.header {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
