@@ -1,0 +1,19 @@
+.cartItems {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 10rem 0 10rem;
+}
+
+.totalPrice {
+    font-size: larger;
+    font-family: fantasy;
+    font-weight: bolder;
+
+}
+
+.btn {
+    font-size: larger;
+    padding: 0.5rem;
+    size: 10vh;
+}

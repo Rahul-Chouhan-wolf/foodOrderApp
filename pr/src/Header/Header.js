@@ -8,12 +8,15 @@ import BookContext from "../Context/BookContext";
 const Header = (props) => {
 
     const cntxt = useContext(BookContext);
+
     return (
         <div className="header">
-            <span>Your Cart</span>
+            <span className="headercartwords1"><h3>Books Order app</h3></span>
+            <span className="headercartwords">Your Cart  </span>
             <span className="icon">
+
                 <HeaderButton
-                    quantity={cntxt.items.amount}
+                    quantity={cntxt.quantity}
                     show={props.show}
                 />
             </span>
@@ -22,5 +25,7 @@ const Header = (props) => {
         </div>
     );
 }
+
+
 
 export default Header;

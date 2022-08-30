@@ -1,4 +1,11 @@
 Button {
-    background-color: rgb(187, 134, 236);
+    box-shadow: 1.1rem;
+    border: 0.4rem;
+    border-radius: 0.3rem;
 
+
+}
+
+Button:hover {
+    background-color: rgb(233, 213, 252);
 }

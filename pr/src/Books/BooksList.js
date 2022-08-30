@@ -31,8 +31,10 @@ const BooksList = (props) => {
     }
     return (
         <ul key={props.id}>
-            <li>{props.name}</li>
-            <li>{props.price}</li>
+            <div className="list">
+                <li>{props.name}</li>
+                <li>{props.price}</li>
+            </div>
             <span><button onClick={addToCart}>+</button></span>
         </ul>
     );

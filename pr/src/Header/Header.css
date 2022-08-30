@@ -3,4 +3,20 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    margin: 0 10rem 0 10rem;
+}
+
+.headercartwords1 {
+    margin-right: 54rem;
+    color: rgb(29, 10, 10);
+    font-size: 200%;
+    font-family: 'Times New Roman', Times, serif;
+    align-self: center;
+}
+
+.headercartwords {
+    color: rgb(29, 10, 10);
+    font-size: 200%;
+    font-family: 'Times New Roman', Times, serif;
+    align-self: center;
 }

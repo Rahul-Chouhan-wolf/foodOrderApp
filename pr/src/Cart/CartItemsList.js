@@ -1,15 +1,28 @@
-import React from "react";
+
+import React, { useContext } from "react";
+import Button from "../ui/Button";
+import Card from '../ui/Card';
+import BookContext from "../Context/BookContext";
 
 const CartItemsList = (props) => {
 
+    const cntxt = useContext(BookContext);
+
+    const remove = (id) => {
+        cntxt.removeItem(id);
+    }
+
     return (
-        <div>
+        <Card>
             <h2>{props.name}</h2>
 
             <span >Price : ${props.price} </span>
+
             <span > x {props.amount}</span>
 
-        </div>
+            <Button><button onClick={remove.bind(null, props.id)}>Remove</button></Button>
+
+        </Card>
     )
 }
 

@@ -4,6 +4,7 @@ import BookContext from "./BookContext";
 const defaultCartState = {
     items: [],
     totalAmount: 0,
+    quantity: 0
 };
 
 const cartReducer = (state, action) => {
@@ -11,6 +12,8 @@ const cartReducer = (state, action) => {
     if (action.type === 'ADD') {
         const updatedTotalAmount =
             state.totalAmount + action.item.price;
+
+        const updatedQuantity = state.quantity + action.item.amount;
 
         const existingCartItemIndex = state.items.findIndex(
             (item) => item.id === action.item.id
@@ -26,7 +29,7 @@ const cartReducer = (state, action) => {
                 amount: action.item.amount,
             };
             updatedItems = [...state.items];
-            console.log(updatedItems);
+
             updatedItems[existingCartItemIndex] = updatedItem;
         } else {
             updatedItems = state.items.concat(action.item);
@@ -35,8 +38,39 @@ const cartReducer = (state, action) => {
         return {
             items: updatedItems,
             totalAmount: updatedTotalAmount,
+            quantity: updatedQuantity
         };
     }
+
+    if (action.type === 'REMOVE') {
+
+        const existingCartItemIndex = state.items.findIndex(item => item.id === action.id);
+
+        const existingCartItem = state.items[existingCartItemIndex];
+
+
+        const updateAmount = state.totalAmount - existingCartItem.price;
+
+
+        let updatedItems;
+
+        if (existingCartItem.amount === 1) {
+            updatedItems = state.items.filter(item => item.id !== action.id);
+            console.log(updatedItems);
+
+        } else {
+            const updatedItem = { ...existingCartItem, amount: existingCartItem.amount - 1 };
+
+            updatedItems = [...state.items];
+
+            updatedItems[existingCartItemIndex] = updatedItem;
+        }
+        return {
+            items: updatedItems,
+            totalAmount: updateAmount,
+        }
+    }
+
 }
 
 const CntxtProvider = (props) => {
@@ -49,17 +83,18 @@ const CntxtProvider = (props) => {
 
     const addHandler = (item) => {
         dispatchCartAction({ type: 'ADD', item: item });
-        // let arr = [] = item;
-        // let h = arr.concat();
-        // console.log(item.name);
-        // console.log(h);
+    }
+
+    const removeHandler = (id) => {
+        dispatchCartAction({ type: 'REMOVE', id: id });
     }
 
     const BookContext1 = {
         items: cartState.items,
+
         totalAmount: cartState.totalAmount,
         addItem: addHandler,
-        removeItem: 0
+        removeItem: removeHandler
     }
 
     return (
